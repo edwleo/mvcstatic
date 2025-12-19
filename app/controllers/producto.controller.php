@@ -2,7 +2,7 @@
 
 //Necesita del modelo para poder responder...
 require_once '../models/Producto.php';
-$producto = new Producto();
+$producto = new Producto();   
 
 //¿Qué operación desea realizar el usuario?
 //consulta, registro, actualizar, eliminar, buscar ¿?
