@@ -1,0 +1,14 @@
+{
+  "apellidos": "FRANCIA MINAYA",
+  "nombres": "Jhon Edward",
+  "lenguajes": ["HTML", "CSS", "Python", "Javascript"],
+  "amigos": ["Sergio", "César", "Joel", "José"],
+  "edad": 20,
+  "estatura": 1.72,
+  "formacion": {
+    "inicial": ["Las abejitas"],
+    "primaria": ["IE Los DEVS", "IE Avengers"],
+    "secundaria": ["IE JPB"],
+    "carrera": ["SENATI", "", ""]
+  }
+}
