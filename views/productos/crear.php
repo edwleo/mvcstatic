@@ -9,6 +9,9 @@
 <body>
   <div class="container">
     <h1>Registro de productos</h1>
+    <a href="./listar.php" class="btn btn-sm btn-primary">Lista de productos</a>
+    <hr>
+
     <form action="" id="formulario-producto">
       <div class="card">
         <div class="card-header">Complete el formulario</div>
@@ -88,9 +91,16 @@
           body: datos
         })
         .then(response => response.json())
-        .then(data => { console.log(data) })
+        .then(data => { 
+          //console.log(data) 
+          if (data.id > 0){
+            document.querySelector("#formulario-producto").reset()
+            alert("Datos guardados correctamente...")
+          }else{
+            alert("No se pudo concretar el proceso")
+          }
+        })
 
-        alert("Datos guardados correctamente...")
       }
 
     })
