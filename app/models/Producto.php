@@ -134,30 +134,49 @@ class Producto extends Conexion
     }
   }
 
-  public function buscar($id)
-  {
-    try {
+  public function buscarPorId(int $id){
+    try{
       //1. Crear la consulta SQL
-      $sql = "
-        SELECT 
-          id, clasificacion, marca, descripcion, garantia, ingreso, cantidad
-          FROM productos
-          WHERE id = ?
-      ";
+      $sql = "SELECT * FROM productos WHERE id = ?";
 
-      //2. Enviar la consulta preparada a PDO
+      //2. Preparación
       $consulta = $this->pdo->prepare($sql);
 
-      //3. Ejecutar la consulta
+      //3. Ejecución (opcionalmente array = comodines)
       $consulta->execute(array($id));
 
-      //4. Entregar resultado
-      //fetchAll (colección de arreglos)
-      //PDO::FETCH_ASSOC (los valores son asociativos)
+      //4. Resultados 
+      //fetchAll    : retorna todos los elementos
+      //FETCH_ASSOC : formateo como arreglo asociativo
       return $consulta->fetchAll(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
-      return [];
+    }
+    catch(Exception $e){
+      die($e->getMessage());
+    }
+  }
+
+  public function buscarPorMarca(string $marca): array{
+    try{
+      //1. Crear la consulta SQL
+      $sql = "SELECT * FROM productos WHERE marca = ?";
+
+      //2. Preparación
+      $consulta = $this->pdo->prepare($sql);
+
+      //3. Ejecución (opcionalmente array = comodines)
+      $consulta->execute(array($marca));
+
+      //4. Resultados 
+      //fetchAll    : retorna todos los elementos
+      //FETCH_ASSOC : formateo como arreglo asociativo
+      return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch(Exception $e){
+      die($e->getMessage());
     }
   }
 
 }
+
+//$producto = new Producto();
+//print_r($producto->buscarPorId(2));
