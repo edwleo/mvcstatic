@@ -37,7 +37,8 @@ if (isset($_POST['operacion'])) {
       //Algoritmo...
       break;
     case 'eliminar':
-      //Algoritmo...
+      $afectados = $producto->eliminar($_POST['id']);
+      echo json_encode(['afectados' => $afectados]);
       break;
     case 'buscarPorId':
       echo json_encode($producto->buscarPorId($_POST['id']));

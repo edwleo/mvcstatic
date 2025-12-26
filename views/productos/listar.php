@@ -70,13 +70,43 @@
               <td>${element.ingreso}</td>
               <td>${element.cantidad}</td>
               <td>
-                <a href='#' class='btn btn-sm btn-danger'>Eliminar</a>
+                <a href='#' data-idproducto='${element.id}' class='btn btn-sm btn-danger'>Eliminar</a>
                 <a href='#' class='btn btn-sm btn-info'>Editar</a>
               </td>
             </tr>
             `;
           });
         })
+      }
+
+      //Delegación de eventos
+      const tabla = document.querySelector("#tabla-productos")
+      tabla.addEventListener("click", async(event) => {
+        //Verificar el elemento clickeado es el correcto
+        if (event.target.classList.contains('btn-danger')){
+
+          //Evitar recargar la página
+          event.preventDefault()
+
+          //Obtener el ID
+          const idproducto = event.target.dataset.idproducto
+          console.log('Eliminando', idproducto)
+
+          if (confirm("¿Está seguro de eliminar?")){
+            eliminarProducto(idproducto)
+          }
+        }
+      })
+
+      function eliminarProducto(id){
+        const datos = new FormData()
+        fetch(`../../app/controllers/producto.controller.php`, {
+          method: 'POST',
+          body: datos
+        })
+          .then()
+          .then()
+          .catch()
       }
 
       obtenerDatos()
